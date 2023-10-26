@@ -4,13 +4,13 @@ import pickle
 import os
 
 print(os.getcwd())
-with open('impute_dict.json', 'r') as f:
+with open('/Users/libbykosolapov/PycharmProjects/pythonProject/src/impute_dict.json', 'r') as f:
     data = json.load(f)
 
-with open('scalers.pkl', 'rb') as f:
+with open('/Users/libbykosolapov/PycharmProjects/pythonProject/src/scalers.pkl', 'rb') as f:
     scalers = pickle.load(f)
 
-with open('encoders.pkl', 'rb') as f:
+with open('/Users/libbykosolapov/PycharmProjects/pythonProject/src/encoders.pkl', 'rb') as f:
     encoders = pickle.load(f)
 
 def check_cols_existence(df):
@@ -80,5 +80,6 @@ def transform_data(df):
     df_scaled = transform_numerical_data(df_imputed, scalers, data["numerical_columns"])
     df_encoded = transform_categorical_data(df_imputed, encoders, data["categorical_columns"])
     x = pd.concat([df_scaled, df_encoded], axis=1)
-    x.columns = ["".join(e for e in col if e.isalnum() or e == '_') for col in x.columns]
-    return x
+    x_selected = x[data['relevant_features']]
+    x_selected.columns = ["".join(e for e in col if e.isalnum() or e == '_') for col in x_selected.columns]
+    return x_selected

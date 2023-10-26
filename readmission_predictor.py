@@ -18,10 +18,10 @@ class Predictor:
 
 
 if __name__ == '__main__':
-    model_path = "src/xgb_all_features_best_model.pkl"
+    model_path = "src/xgb_selected_features_best_model.pkl"
     predictor = Predictor(model_path)
     # Can be replaced to read from database or accept dictionary and create dataframe from if
-    input_data = pd.read_csv("src/sample_df.csv")
+    input_data = pd.read_csv("src/test_raw_sample.csv")
     predictions = predictor.predict(input_data)
     print(predictions)
 
