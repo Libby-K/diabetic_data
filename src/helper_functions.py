@@ -3,14 +3,14 @@ import json
 import pickle
 import os
 
-print(os.getcwd())
-with open('/Users/libbykosolapov/PycharmProjects/pythonProject/src/impute_dict.json', 'r') as f:
+
+with open('impute_dict.json', 'r') as f:
     data = json.load(f)
 
-with open('/Users/libbykosolapov/PycharmProjects/pythonProject/src/scalers.pkl', 'rb') as f:
+with open('scalers.pkl', 'rb') as f:
     scalers = pickle.load(f)
 
-with open('/Users/libbykosolapov/PycharmProjects/pythonProject/src/encoders.pkl', 'rb') as f:
+with open('encoders.pkl', 'rb') as f:
     encoders = pickle.load(f)
 
 def check_cols_existence(df):
